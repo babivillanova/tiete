@@ -10,11 +10,14 @@ export default function Header({ link, title, subTitle, ...props }) {
     <div style={{ display: "flex", justifyContent: "space-between", padding: "1.2rem" }}>
       <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "start" }}>
         <a href={link} target="_blank" rel="noopener noreferrer">
-          <Title level={4} style={{ margin: "0 0.5rem 0 0" }}>
+          <Title level={4} style={{ margin: "0 0.5rem 0 0", fontFamily: "fantasy", color: "black" }}>
             {title}
           </Title>
         </a>
-        <Text type="secondary" style={{ textAlign: "left" }}>
+        <Text
+          type="secondary"
+          style={{ textAlign: "left", fontFamily: "sans-serif", fontWeight: "medium", color: "white" }}
+        >
           {subTitle}
         </Text>
       </div>
@@ -24,7 +27,7 @@ export default function Header({ link, title, subTitle, ...props }) {
 }
 
 Header.defaultProps = {
-  link: "https://github.com/scaffold-eth/scaffold-eth",
-  title: "🏗 Scaffold-Eth",
-  subTitle: "Forkable Ethereum dev stack focused on fast product iteration",
+  link: "./",
+  title: "TIETE",
+  subTitle: "bridging the gap between artists and fans",
 };

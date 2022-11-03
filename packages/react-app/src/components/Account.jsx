@@ -60,7 +60,7 @@ export default function Account({
   if (web3Modal?.cachedProvider) {
     accountButtonInfo = { name: "Logout", action: logoutOfWeb3Modal };
   } else {
-    accountButtonInfo = { name: "Connect", action: loadWeb3Modal };
+    accountButtonInfo = { name: "Connect Wallet", action: loadWeb3Modal };
   }
 
   const display = !minimized && (
@@ -68,7 +68,7 @@ export default function Account({
       {address && (
         <Address address={address} ensProvider={mainnetProvider} blockExplorer={blockExplorer} fontSize={20} />
       )}
-      <Balance address={address} provider={localProvider} price={price} size={20} />
+      {/* <Balance address={address} provider={localProvider} price={price} size={20} /> */}
       {!isContract && (
         <Wallet
           address={address}

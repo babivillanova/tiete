@@ -2,6 +2,7 @@ import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Home.css";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
