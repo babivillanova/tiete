@@ -301,6 +301,17 @@ function App(props) {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
+          <Route exact path="/debug">
+            <Contract
+              name="YourContract"
+              price={price}
+              signer={userSigner}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+              contractConfig={contractConfig}
+            />
+          </Route>
         </Switch>
 
         <Menu
@@ -316,6 +327,9 @@ function App(props) {
           </Menu.Item>
           <Menu.Item key="/dashboard">
             <Link to="/dashboard">Dashboard</Link>
+          </Menu.Item>
+          <Menu.Item key="/debug">
+            <Link to="/debug">Debug Contracts</Link>
           </Menu.Item>
         </Menu>
       </div>
