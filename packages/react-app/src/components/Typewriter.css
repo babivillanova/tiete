@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+
+
+
+.Typewriter__wrapper {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    height: 90vh;
+    width: 50vw;
+    overflow: hidden;
+  padding-left: 20px;
+
+  /* animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;  */
+    color: white;
+    font-family: 'Six Caps';
+    font-size: 18rem;
+    line-height: 91%;
+    
+}
+

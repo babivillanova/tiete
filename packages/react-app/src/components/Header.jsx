@@ -8,15 +8,22 @@ const { Title, Text } = Typography;
 export default function Header({ link, title, subTitle, ...props }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", padding: "1.2rem" }}>
-      <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "start" }}>
+      <div style={{ display: "flex", flexDirection: "row", flex: 1, alignItems: "center", width: "60vw" }}>
         <a href={link} target="_blank" rel="noopener noreferrer">
-          <Title level={4} style={{ margin: "0 0.5rem 0 0", fontFamily: "fantasy", color: "black" }}>
+          <Title level={4} style={{ margin: "0 0.5rem 0 0", fontFamily: "serif", color: "white" }}>
             {title}
           </Title>
         </a>
         <Text
           type="secondary"
-          style={{ textAlign: "left", fontFamily: "sans-serif", fontWeight: "medium", color: "white" }}
+          style={{
+            textAlign: "end",
+            fontFamily: "serif",
+            fontWeight: "100",
+            color: "white",
+            width: "52vw",
+            letterSpacing: "0.2rem",
+          }}
         >
           {subTitle}
         </Text>
@@ -28,6 +35,6 @@ export default function Header({ link, title, subTitle, ...props }) {
 
 Header.defaultProps = {
   link: "./",
-  title: "TIETE",
+  title: "tiete",
   subTitle: "bridging the gap between artists and fans",
 };
