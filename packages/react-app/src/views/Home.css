@@ -8,7 +8,9 @@
 
 }
 
-
+.container{
+  color: white;
+}
 
 .container_canvas{
     position: absolute;
