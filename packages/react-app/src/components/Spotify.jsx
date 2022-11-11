@@ -7,7 +7,14 @@ export default function Spotify() {
 
   return (
     <div style={{ display: "flex" }}>
-      <Button style={{ marginLeft: 5 }} shape="round">
+      <Button
+        style={{ marginLeft: 5 }}
+        shape="round"
+        onClick={() => {
+          //access link to https://supporting-fan.vercel.app/login
+          window.location.href = "https://supporting-fan.vercel.app/login";
+        }}
+      >
         Connect to Spotify
       </Button>
     </div>
