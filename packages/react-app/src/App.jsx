@@ -292,7 +292,7 @@ function App(props) {
           </Route>
           <Route exact path="/debug">
             <Contract
-              name="FanNFT"
+              name="Tiete"
               price={price}
               signer={userSigner}
               provider={localProvider}
