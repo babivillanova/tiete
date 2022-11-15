@@ -12,6 +12,9 @@ contract FanNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
+    // Mappings
+    mapping(address => bool) public whitelistedAddresses; //private
+
     constructor() ERC721("FanToken", "FTK") {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
