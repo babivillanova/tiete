@@ -136,7 +136,7 @@ contract FetchFromArray is ChainlinkClient, ConfirmedOwner {
         // Set the URL to perform the GET request on
         // API docs: https://www.coingecko.com/en/api/documentation?
         // req.add('get', 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10');
-        req.add('get', 'https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/1.json');
+        req.add('get', 'https://ipfs.io/ipfs/bafybeicshr4hyz5ruwaekg6vx7jz2kfvvudeybgfxkqt4xqwbhj6vhy5d4/?filename=DummySpotifyData.json');
 
         // Set the path to find the desired data in the API response, where the response format is:
         // [{
@@ -149,7 +149,7 @@ contract FetchFromArray is ChainlinkClient, ConfirmedOwner {
         // .. }]
         // request.add("path", "0.id"); // Chainlink nodes prior to 1.0.0 support this format
         // req.add('path', '0,id'); // Chainlink nodes 1.0.0 and later support this format
-        req.add('path', '0, image');
+        req.add('path', '0, artist');
         // Sends the request
         return sendChainlinkRequest(req, fee);
     }
