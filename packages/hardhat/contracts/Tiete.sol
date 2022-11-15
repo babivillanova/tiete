@@ -226,6 +226,8 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
         pure
         returns (string memory)
     {
+
+    //Refactor to extend stack limit
         return
             string(
                 abi.encodePacked(
