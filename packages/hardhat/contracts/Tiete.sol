@@ -178,6 +178,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import {Base64} from "./Base64.sol";
 
 contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     using Counters for Counters.Counter;
@@ -190,8 +191,8 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     mapping(address => bool) public whitelistedAddresses; //private
 
 
-    // URI of assets (JSON file) on IPFS
-    string public PROVENANCE_URI = "https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5";
+    // // URI of assets (JSON file) on IPFS
+    // string public PROVENANCE_URI = "https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5";
 
     // Extension of Meatadata to be viewable on Opensea
     string private constant BASE_EXTENSION = ".json";
@@ -203,38 +204,68 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     receive() external payable {}
 
     function donationForWhitelist() public payable {
-        require(msg.value > 0.1 ether, 'Donation to small');
+        // 1 Gwei
+        require(msg.value > 0.000000001 ether, 'Not enough donation amount');
         (bool sent, ) = address(this).call{value: msg.value}("");
         require(sent, "Failed to send Ether");
+
+        requestFirstId();
 
         whitelistedAddresses[msg.sender] = true;
     }
 
-    // Prepare User data before minting.
-    // function prepareNftData(string memory description) public returns(string memory){
-    //     // requestBytes(description);
-    //     return fanData;
+    // function overrides by Dev
+    // Set baseURI on deployment
+    // function _baseURI() internal view override returns (string memory) {
+    //     return PROVENANCE_URI; 
     // }
 
-    // function ovverrides by Dev
-    // Set baseURI on deployment
-    function _baseURI() internal view override returns (string memory) {
-        return PROVENANCE_URI; 
+    /* Generates a tokenURI using Base64 string as the image */
+    function formatTokenURI(string memory data)
+        public
+        pure
+        returns (string memory)
+    {
+        return
+            string(
+                abi.encodePacked(
+                    "data:application/json;base64,",
+                    Base64.encode(
+                        bytes(
+                            abi.encodePacked(
+                                '{"name": "Tiete NFT", "description": "Fan token of top listened to Spotify Artist", "image": "https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/FanNFT.png"',
+                                 ', "Top Artist": "', data,
+                                 '" , "Attributes": [', 
+                                    ' {"trait_type": "', '"data1"', '" "value": "', '"data1a"', '"}',
+                                    ' {"trait_type": "', '"data2"', '" "value": "', '"data2a"', '"}',
+                                    // ' {"trait_type": "', '"data3"', '" "value": "', '"data3a"', '"}', // stack too deep
+                                    // ' {"trait_type": "', '"data4"', '" "value": "', '"data4a"', '"}',
+                                    ', ]'
+                                '}'
+                            )
+                        )
+                    )
+                )
+            );
     }
 
-        // Modifiers
-    // modifier whitelistedDonor() {
-    //     require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
-    //     _;
-    // } 
-     function mintTieteNFT() public {
-        require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
+
+     function mintTieteNFT(string memory data) public {
+        // require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
+
+        string memory nftokenURI = formatTokenURI(data);
 
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
-        _setTokenURI(tokenId, PROVENANCE_URI);      
+        _setTokenURI(tokenId, nftokenURI);      //PROVENANCE_URI
      }
+
+// Modifiers by dev
+    // modifier whitelistedDonor() {
+    //     require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
+    //     _;
+    // } 
 
     function safeMint(address to, string memory uri) public {
         uint256 tokenId = _tokenIdCounter.current();
@@ -264,8 +295,9 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
         returns (string memory)
     {
         require(_exists(tokenId), "ERC721Metadata: URI query error. Token nonexistent");
-        return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
-        // return super.tokenURI(tokenId);
+        // return string(abi.encodePacked("https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/", tokenId.toString(), BASE_EXTENSION));
+        // return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
+        return super.tokenURI(tokenId);
     }
 
     function supportsInterface(bytes4 interfaceId)
