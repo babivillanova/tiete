@@ -192,7 +192,7 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
 
 
     // // URI of assets (JSON file) on IPFS
-    // string public PROVENANCE_URI = "https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5";
+    string public PROVENANCE_URI = "https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/";
 
     // Extension of Meatadata to be viewable on Opensea
     string private constant BASE_EXTENSION = ".json";
@@ -252,7 +252,7 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     }
 
 
-     function mintTieteNFT(string memory data) public {
+     function mintTieteNFTonChain(string memory data) public {
         // require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
 
         string memory nftokenURI = formatTokenURI(data);
@@ -262,6 +262,15 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, nftokenURI);      //PROVENANCE_URI
      }
+
+    function mintTieteNFTatIPFS() public {
+        // require(whitelistedAddresses[msg.sender], 'Address not whitelisted');
+
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, PROVENANCE_URI);      //PROVENANCE_URI
+    }
 
 // Modifiers by dev
     // modifier whitelistedDonor() {
@@ -298,7 +307,7 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     {
         require(_exists(tokenId), "ERC721Metadata: URI query error. Token nonexistent");
         // return string(abi.encodePacked("https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/", tokenId.toString(), BASE_EXTENSION));
-        // return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
+        return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
         return super.tokenURI(tokenId);
     }
 
