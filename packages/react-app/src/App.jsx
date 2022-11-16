@@ -324,9 +324,9 @@ function App(props) {
           <div key="/home">
             <Link to="/home">Home</Link>
           </div>
-          <div key="/about">
+          {/* <div key="/about">
             <Link to="/about">About us</Link>
-          </div>
+          </div> */}
           <div key="/dashboard">
             <Link to="/dashboard">Dashboard</Link>
           </div>
