@@ -34,7 +34,7 @@ export default function Header({ link, title, subTitle, ...props }) {
 }
 
 Header.defaultProps = {
-  link: "./",
+  link: "../home",
   title: "tiete",
   subTitle: "bridging the gap between artists and fans",
 };

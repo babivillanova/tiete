@@ -19,8 +19,11 @@ nav a {
   color: gray;
 }
 nav div:hover {
- 
   color: white;
   border-bottom: 2px solid white;
   transition: 0.5s ease-in-out;
+}
+nav div a:hover {
+  color: white;
+  transition: 0.2s ease-in-out;
 }

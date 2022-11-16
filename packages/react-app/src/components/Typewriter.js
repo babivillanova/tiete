@@ -8,7 +8,12 @@ function TypewriterComponent() {
       <h1>
         <Typewriter
           options={{
-            strings: ["SHOW YOUR SUPPORT", "NO REASON TO SIT STILL", "BECOME A VERIFIED FAN"],
+            strings: [
+              "SHOW YOUR SUPPORT",
+              "NO REASON TO SIT STILL",
+              "BECOME A VERIFIED FAN",
+              "UNLOCK EXCLUSIVE CONTENT",
+            ],
             autoStart: true,
             loop: true,
             cursor: " ",

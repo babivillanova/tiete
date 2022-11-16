@@ -114,14 +114,23 @@ function Dashboard() {
   return (
     <div className="container">
       {!token && (
-        <a href="https://accounts.spotify.com/authorize?client_id=34c24373d1af48428d219f760ee07384&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20user-top-read%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/dashboard/">
-          Login to Spotify
-        </a>
+        <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
+          <Button type="round" style={{ marginRight: "20px", width: "130px" }}>
+            <a href="https://accounts.spotify.com/authorize?client_id=34c24373d1af48428d219f760ee07384&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20user-top-read%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/dashboard/">
+              Login to Spotify
+            </a>
+          </Button>
+        </div>
       )}
       {token && (
-        <div>
-          <Button onClick={logout}>Logout</Button>
-          <Button onClick={recentlyPlayed}>Get your Top Artists</Button>
+        <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
+          <Button type="round" onClick={recentlyPlayed} style={{ marginRight: "20px" }}>
+            Get your Top Artists
+          </Button>
+          <Button type="round" onClick={logout} style={{ marginRight: "20px", width: "130px" }}>
+            Logout
+          </Button>
+
           {/* <form onSubmit={searchArtists}>
             <input type="text" value={searchKey} onChange={e => setSearchKey(e.target.value)} />
             <button type="submit">Search</button>

@@ -170,6 +170,105 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     overflow: hidden;
     cursor: pointer;
+    transition: all 0.5s ease-in;
+  }
+
+.buttonsmenu{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #808080;
+    padding: 0;
+    right: 20px;
+    pointer-events: none;
+    justify-content: end;
+    align-items: flex-end;
+    flex-direction: row;
+    font-size: 10px;
+    line-height: 1.5em;
+  }
+
+  .buttonsmenu.left {
+    justify-content: flex-start;
+  }
+  
+  .buttonsmenu.right {
+    justify-content: flex-end;
+  }
+  
+  .buttonsmenu > div {
+    word-wrap: none;
+    word-break: none;
+    white-space: pre;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  .buttonsmenu > div b {
+    font-weight: 600;
+    color: #b0b0b0;
+  }
+  
+  .buttonsmenu.ready > div {
+    cursor: pointer;
+  }
+  
+  .buttonsmenu.clicked {
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .buttonsmenu a {
+    pointer-events: all;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    font-family: serif;
+  }
+  .buttonsmenu a:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
+
+  .card:hover{
+    transform: scale(1.03);
+  }
+
+  /* .card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: all 2s ease-in;
   }
 
+  .card:hover img{
+    transform: scale(1.1);
+  }
+
+  .card h2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0;
+    opacity: 0;
+    transition: all 2s ease-in;
+  }
+
+  .card:hover h2{
+    font-size: 40px;
+    opacity: 1;
+  }
+
+  .card h2 span{
+} */

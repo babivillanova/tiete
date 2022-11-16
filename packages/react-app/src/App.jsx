@@ -310,27 +310,28 @@ function App(props) {
             flexDirection: "row",
             justifyContent: "center",
             textAlign: "center",
-            bottom: 0,
+            bottom: "20px",
             background: "none",
             fontFamily: "fantasy",
             width: "100%",
             height: "30px",
             backgroundColor: "black",
+            borderBottom: "1px solid #222222",
           }}
           selectedKeys={[location.pathname]}
           // mode="horizontal"
         >
           <div key="/home">
-            <a to="/home">Home</a>
+            <Link to="/home">Home</Link>
           </div>
           <div key="/about">
-            <a to="/about">About us</a>
+            <Link to="/about">About us</Link>
           </div>
           <div key="/dashboard">
-            <a to="/dashboard">Dashboard</a>
+            <Link to="/dashboard">Dashboard</Link>
           </div>
           <div key="/debug">
-            <a to="/debug">Debug Contracts</a>
+            <Link to="/debug">Debug Contracts</Link>
           </div>
         </nav>
       </div>
