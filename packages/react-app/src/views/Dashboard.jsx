@@ -89,8 +89,15 @@ function Dashboard() {
       return acc;
     }, {});
     return Object.values(uniqueArtists).map(artist => (
-      <div key={artist.id}>
-        <div className="card">{artist.track.artists[0].name}</div>
+      <div className="card" key={artist.id}>
+        <div className="id">#{artists.indexOf(artist) + 1}</div>
+        <div>
+          <img src={artist.track.album.images[0].url} alt="album cover" className="cover" />
+          <div className="artistName">{artist.track.artists[0].name} </div>
+          {/* 
+                <div className='mint'>You unlocked</div>
+                <div className='mint'>Mint NFT</div> */}
+        </div>
       </div>
     ));
   };
@@ -112,32 +119,40 @@ function Dashboard() {
   // };
 
   return (
-    <div className="container">
-      {!token && (
-        <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
-          <Button type="round" style={{ marginRight: "20px", width: "130px" }}>
-            <a href="https://accounts.spotify.com/authorize?client_id=34c24373d1af48428d219f760ee07384&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20user-top-read%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/dashboard/">
-              Login to Spotify
-            </a>
-          </Button>
-        </div>
-      )}
-      {token && (
-        <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
-          <Button type="round" onClick={recentlyPlayed} style={{ marginRight: "20px" }}>
-            Get your Top Artists
-          </Button>
-          <Button type="round" onClick={logout} style={{ marginRight: "20px", width: "130px" }}>
-            Logout
-          </Button>
+    <div>
+      <div className="ribbon">
+        <div className="ribbon-title">Let's empower the small artists and connect with them </div>
+        Login into your stream account to verify your listening history.
+        <br />
+        Every month unlock a new NFT by listening and donating to your favorite artists.
+      </div>
+      <div className="container2">
+        {!token && (
+          <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
+            <Button type="default" style={{ width: "100vw" }}>
+              <a href="https://accounts.spotify.com/authorize?client_id=34c24373d1af48428d219f760ee07384&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20user-read-recently-played%20playlist-modify-private%20user-top-read%20user-follow-modify%20user-follow-read%20user-library-read%20user-library-modify%20user-read-private%20user-read-email%20user-top-read%20user-read-playback-state&response_type=token&redirect_uri=http://localhost:3000/dashboard/">
+                Login to Spotify
+              </a>
+            </Button>
+          </div>
+        )}
+        {token && (
+          <div style={{ display: "flex", justifyContent: "right", flexDirection: "row" }}>
+            <Button type="default" onClick={recentlyPlayed} style={{ width: "83.33333vw" }}>
+              Get your Top Artists
+            </Button>
+            <Button type="default" onClick={logout} style={{ width: "16.66667vw" }}>
+              Logout
+            </Button>
 
-          {/* <form onSubmit={searchArtists}>
+            {/* <form onSubmit={searchArtists}>
             <input type="text" value={searchKey} onChange={e => setSearchKey(e.target.value)} />
             <button type="submit">Search</button>
           </form> */}
-        </div>
-      )}
-      <div className="cards">{renderUniqueArtists()}</div>
+          </div>
+        )}
+        <div className="cards">{renderUniqueArtists()}</div>
+      </div>
     </div>
   );
 }

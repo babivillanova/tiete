@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+
 * {
  font-family: sans-serif;
  margin: 0;
@@ -10,8 +12,54 @@
 
 .container{
   color: white;
+  margin-right: 100px;
+  margin-left: 10px;
+  
 }
 
+.container2{
+  color: white;
+  margin-right: 100px;
+  margin-left: 100px;
+  
+}
+
+.ribbon{
+  height: 150px;
+  background-color: whitesmoke;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: serif;
+  font-size: large;
+  text-align: right;
+
+
+}
+
+.ribbon-title{
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'six caps';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  margin-bottom: -10px;
+  text-align: left;
+}
+
+.id{
+  font-size: 30px;
+  font-weight: lighter;
+  font-family: serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: -10px;
+  text-align: center;
+}
 .container_canvas{
     position: absolute;
     display: block;
@@ -22,6 +70,22 @@
     right: 0;
 }
 
+.cover{
+  width: 100px;
+  border-radius: 50%;
+  border: white solid 3px;
+  margin-bottom: -40px;
+}
+
+.artistName{
+  font-size: 12px;
+  font-weight: lighter;
+  font-family: sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: -10px;
+  text-align: center;
+}
 * {
     box-sizing: border-box;
   }
@@ -149,39 +213,47 @@
     font: 100 24px/100px sans-serif;
     height: 100%;
     width: 100%;
+   
     
     text-align: center;
     display: flex;
   flex-wrap: wrap;
-    padding: 10px;
-    box-sizing: border-box;
+  justify-content: center;
+   
+
+    background: linear-gradient(99.9deg, #00A8E9 -12.55%, #00CCC1 102.22%);
     
 
       }
 
   .card{
     height: 300px;
-    width: 250px;
-    padding: 10px;
-    
-    margin: 20px;
-    background: #101010;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    width:calc((100vw - 200px)/6) ;
+    float: center;
+
+    margin: 0px;
+    /* background: #101010; */
+    border-right: #f1f1f1a2 1px solid;
+    border-bottom: #f1f1f1c4 1px solid;
+   ;
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.5); */
     overflow: hidden;
     cursor: pointer;
     transition: all 0.5s ease-in;
   }
 
+
+
+
 .buttonsmenu{
     position: relative;
-    top: 0;
+    margin-top: 20px;
     width: 100%;
     height: 100%;
     display: flex;
-    color: #808080;
-    padding: 0;
-    right: 20px;
+    color: #000000;
+    
+    right: 100px;
     pointer-events: none;
     justify-content: end;
     align-items: flex-end;
@@ -236,9 +308,7 @@
     color: inherit;
   }
 
-  .card:hover{
-    transform: scale(1.03);
-  }
+
 
   /* .card img{
     width: 100%;
