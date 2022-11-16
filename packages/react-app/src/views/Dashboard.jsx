@@ -16,9 +16,9 @@ import axios from "axios";
 
 function Dashboard() {
   const [token, setToken] = useState("");
-  const [searchKey, setSearchKey] = useState("");
+  // const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -40,6 +40,7 @@ function Dashboard() {
     setToken("");
     window.localStorage.removeItem("token");
     window.localStorage.clear();
+    setArtists([]);
   };
 
   // const searchArtists = async e => {
@@ -88,7 +89,7 @@ function Dashboard() {
       return acc;
     }, {});
     return Object.values(uniqueArtists).map(artist => (
-      <div className="cards" key={artist.id}>
+      <div key={artist.id}>
         <div className="card">{artist.track.artists[0].name}</div>
       </div>
     ));
@@ -127,8 +128,7 @@ function Dashboard() {
           </form> */}
         </div>
       )}
-
-      {renderUniqueArtists()}
+      <div className="cards">{renderUniqueArtists()}</div>
     </div>
   );
 }
