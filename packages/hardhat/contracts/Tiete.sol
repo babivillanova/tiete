@@ -307,7 +307,7 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     {
         require(_exists(tokenId), "ERC721Metadata: URI query error. Token nonexistent");
         // return string(abi.encodePacked("https://ipfs.io/ipfs/QmWLGKLUFYLVs8cswQu9Ti12GSHoswPJwdNnoKRW3ScKA5/", tokenId.toString(), BASE_EXTENSION));
-        return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
+        // return string(abi.encodePacked(PROVENANCE_URI, tokenId.toString(), BASE_EXTENSION));
         return super.tokenURI(tokenId);
     }
 
