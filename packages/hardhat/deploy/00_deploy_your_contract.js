@@ -17,6 +17,36 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
+  const accounts = await ethers.getSigners()
+  const deployerSig = accounts[0]
+
+  // const OperatorFactory = require("@chainlink/contracts/src/v0.7/OperatorFactory.sol")
+
+  // console.log(OPERATOR_FACTORY)
+  // console.log(deployerSig)
+
+  let linkToken;
+  let mockOracle;
+
+  if (chainId == 31337) {
+    const linkTokenFactory = await ethers.getContractFactory("LinkToken")
+    linkToken = await linkTokenFactory.connect(deployerSig).deploy()
+    console.log(`LinkTokenAddress: ${linkToken.address}`)
+
+
+    // const mockOracleFactory = await ethers.getContractFactory("OperatorInterface")
+    // mockOracle = await mockOracleFactory.connect(deployerSig).deploy(linkToken.address)
+    // console.log(`mockOracle: ${mockOracle.address}`)
+  }
+
+  // await deploy("OperatorInterface", {
+  //   // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
+  //   from: deployer,
+  //   // args: [ "MockOracle" ],
+  //   log: true,
+  //   waitConfirmations: 5,
+  // });
+
   await deploy("Tiete", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
