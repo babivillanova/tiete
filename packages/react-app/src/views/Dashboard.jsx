@@ -93,7 +93,10 @@ function Dashboard() {
         <div className="id">#{artists.indexOf(artist) + 1}</div>
         <div>
           <img src={artist.track.album.images[0].url} alt="album cover" className="cover" />
-          <div className="artistName">{artist.track.artists[0].name} </div>
+          <div className="artistName">
+            {artist.track.artists[0].name} <br />
+            <br /> Donate and Claim your NFT
+          </div>
           {/* 
                 <div className='mint'>You unlocked</div>
                 <div className='mint'>Mint NFT</div> */}
