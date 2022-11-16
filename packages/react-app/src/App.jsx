@@ -303,24 +303,36 @@ function App(props) {
           </Route>
         </Switch>
 
-        <Menu
-          style={{ textAlign: "center", bottom: 0, background: "none", fontFamily: "fantasy" }}
+        <nav
+          style={{
+            position: "fixed",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            textAlign: "center",
+            bottom: 0,
+            background: "none",
+            fontFamily: "fantasy",
+            width: "100%",
+            height: "30px",
+            backgroundColor: "black",
+          }}
           selectedKeys={[location.pathname]}
-          mode="horizontal"
+          // mode="horizontal"
         >
-          <Menu.Item key="/home">
-            <Link to="/home">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="/about">
-            <Link to="/about">About us</Link>
-          </Menu.Item>
-          <Menu.Item key="/dashboard">
-            <Link to="/dashboard">Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key="/debug">
-            <Link to="/debug">Debug Contracts</Link>
-          </Menu.Item>
-        </Menu>
+          <div key="/home">
+            <a to="/home">Home</a>
+          </div>
+          <div key="/about">
+            <a to="/about">About us</a>
+          </div>
+          <div key="/dashboard">
+            <a to="/dashboard">Dashboard</a>
+          </div>
+          <div key="/debug">
+            <a to="/debug">Debug Contracts</a>
+          </div>
+        </nav>
       </div>
     </>
   );
