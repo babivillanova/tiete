@@ -34,18 +34,11 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     console.log(`LinkTokenAddress: ${linkToken.address}`)
 
 
-    // const mockOracleFactory = await ethers.getContractFactory("OperatorInterface")
-    // mockOracle = await mockOracleFactory.connect(deployerSig).deploy(linkToken.address)
-    // console.log(`mockOracle: ${mockOracle.address}`)
+    const mockOracleFactory = await ethers.getContractFactory("MockOracle")
+    mockOracle = await mockOracleFactory.connect(deployerSig).deploy(linkToken.address)
+    console.log(`mockOracle: ${mockOracle.address}`)
   }
 
-  // await deploy("OperatorInterface", {
-  //   // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
-  //   from: deployer,
-  //   // args: [ "MockOracle" ],
-  //   log: true,
-  //   waitConfirmations: 5,
-  // });
 
   await deploy("Tiete", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
@@ -57,6 +50,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
 
   // Getting a previously deployed contract
   const Tiete = await ethers.getContract("Tiete", deployer);
+  // console.log(Tiete);
   /*  await YourContract.setPurpose("Hello");
   
     // To take ownership of yourContract using the ownable library uncomment next line and add the 

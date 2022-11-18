@@ -198,7 +198,7 @@ contract Tiete is ERC721, ERC721Enumerable, ERC721URIStorage, FetchFromArray {
     // Extension of Meatadata to be viewable on Opensea
     string private constant BASE_EXTENSION = ".json";
 
-    constructor() ERC721("TieteToken", "TIT") {
+    constructor() ERC721("TieteToken", "TIT")  {
         _tokenIdCounter.increment(); 
     }
 
